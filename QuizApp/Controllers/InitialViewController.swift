@@ -30,7 +30,7 @@ class InitialViewController: UIViewController {
                     let quiz = quizzes.randomElement()!
                     self.setFunFact(quizzes: quizzes)
                     self.setQuizData(quiz: quiz)
-                    self.addQuestionView(question: quiz.questions[0])
+                    self.setQuestionData(question: quiz.questions.randomElement()!)
                 } else {
                     UIUtils.showError(message: "Internal server error", view: self.view)
                 }
@@ -58,14 +58,16 @@ class InitialViewController: UIViewController {
         }
     }
     
-    private func addQuestionView(question: Question) {
+    private func setQuestionData(question: Question) {
         if self.questionViewContainer.subviews.count == 0 {
             self.questionView = QuestionView(
                 frame: CGRect(origin: CGPoint(x: 0, y: 0),
-                              size: CGSize(width: 280, height: 130)))
+                              size: self.questionViewContainer.frame.size))
+            if let questionView = self.questionView {
+                self.questionViewContainer.addSubview(questionView)
+            }
         }
         if let questionView = self.questionView {
-            self.questionViewContainer.addSubview(questionView)
             questionView.question = question
         }
     }
