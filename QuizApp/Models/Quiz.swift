@@ -15,7 +15,7 @@ class Quiz {
     let description: String?
     let category: Category
     let level: Int
-    let image: UIImage?
+    let imageUrl: String?
     let questions: [Question]
     
     init?(json: Any) {
@@ -30,24 +30,9 @@ class Quiz {
             self.title = title
             self.level = level
             self.questions = questionsJson.compactMap{ Question(json: $0) }
-            
-            if let category = Category.category(text: category) {
-                self.category = category
-            } else {
-                return nil
-            }
-            
-            if let description = jsonDict["description"] as? String {
-                self.description = description
-            } else {
-                self.description = nil
-            }
-            
-            if let image = jsonDict["image"] as? Data {
-                self.image = UIImage(data: image)
-            } else {
-                self.image = nil
-            }
+            self.category = Category.category(text: category)
+            self.description = jsonDict["description"] as? String
+            self.imageUrl = jsonDict["image"] as? String
         } else {
             return nil
         }

@@ -11,12 +11,12 @@
 		68784D67224FD20F00F36E5D /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68784D66224FD20F00F36E5D /* Quiz.swift */; };
 		68784D6B224FD34100F36E5D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68784D6A224FD34100F36E5D /* Question.swift */; };
 		68784D6D224FD97600F36E5D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68784D6C224FD97600F36E5D /* Category.swift */; };
+		688B5F762260DCBD001CDFFE /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B5F752260DCBD001CDFFE /* ImageService.swift */; };
 		68952B8D224FBEEB005D2C10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68952B8C224FBEEB005D2C10 /* AppDelegate.swift */; };
 		68952B8F224FBEEB005D2C10 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68952B8E224FBEEB005D2C10 /* InitialViewController.swift */; };
 		68952B94224FBEEC005D2C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68952B93224FBEEC005D2C10 /* Assets.xcassets */; };
 		689635D92258E0780067F7C9 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689635D82258E0780067F7C9 /* UIButtonExtension.swift */; };
 		689635DC2258E2360067F7C9 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689635DB2258E2360067F7C9 /* UIUtils.swift */; };
-		68994E4A2252ADC80064161A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68994E492252ADC80064161A /* Default-568h@2x.png */; };
 		68CC66B8225117AF007573E1 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68CC66B7225117AF007573E1 /* InitialViewController.xib */; };
 		68CC66BA225130BF007573E1 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68CC66B9225130BF007573E1 /* QuestionView.xib */; };
 		68CC66BC22513136007573E1 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CC66BB22513136007573E1 /* QuestionView.swift */; };
@@ -27,6 +27,7 @@
 		68784D66224FD20F00F36E5D /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		68784D6A224FD34100F36E5D /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		68784D6C224FD97600F36E5D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		688B5F752260DCBD001CDFFE /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		68952B89224FBEEB005D2C10 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68952B8C224FBEEB005D2C10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68952B8E224FBEEB005D2C10 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		68952B98224FBEEC005D2C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		689635D82258E0780067F7C9 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		689635DB2258E2360067F7C9 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
-		68994E492252ADC80064161A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		68CC66B7225117AF007573E1 /* InitialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
 		68CC66B9225130BF007573E1 /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		68CC66BB22513136007573E1 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -54,7 +54,6 @@
 		68952B80224FBEEB005D2C10 = {
 			isa = PBXGroup;
 			children = (
-				68994E492252ADC80064161A /* Default-568h@2x.png */,
 				68952B8B224FBEEB005D2C10 /* QuizApp */,
 				68952B8A224FBEEB005D2C10 /* Products */,
 			);
@@ -97,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				68784D64224FCEE000F36E5D /* QuizService.swift */,
+				688B5F752260DCBD001CDFFE /* ImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -194,7 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68952B94224FBEEC005D2C10 /* Assets.xcassets in Resources */,
-				68994E4A2252ADC80064161A /* Default-568h@2x.png in Resources */,
 				68CC66B8225117AF007573E1 /* InitialViewController.xib in Resources */,
 				68CC66BA225130BF007573E1 /* QuestionView.xib in Resources */,
 			);
@@ -210,6 +209,7 @@
 				68784D65224FCEE000F36E5D /* QuizService.swift in Sources */,
 				689635D92258E0780067F7C9 /* UIButtonExtension.swift in Sources */,
 				68952B8F224FBEEB005D2C10 /* InitialViewController.swift in Sources */,
+				688B5F762260DCBD001CDFFE /* ImageService.swift in Sources */,
 				68784D6B224FD34100F36E5D /* Question.swift in Sources */,
 				68CC66BC22513136007573E1 /* QuestionView.swift in Sources */,
 				68784D67224FD20F00F36E5D /* Quiz.swift in Sources */,

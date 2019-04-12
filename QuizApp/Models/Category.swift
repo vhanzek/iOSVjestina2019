@@ -13,14 +13,12 @@ enum Category {
     case sports
     case science
     
-    static func category(text: String) -> Category? {
+    static func category(text: String) -> Category {
         switch text.uppercased() {
             case "SPORTS":
                 return .sports
-            case "SCIENCE":
-                return .science
             default:
-                return nil
+                return .science
         }
     }
     

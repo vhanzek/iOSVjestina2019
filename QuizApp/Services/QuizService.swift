@@ -10,7 +10,7 @@ import UIKit
 
 class QuizService {
     
-    let urlString = "https://iosquiz.herokuapp.com/api/quizzes"
+    private final let urlString = "https://iosquiz.herokuapp.com/api/quizzes"
     
     func fetchQuizzes(completion: @escaping (([Quiz]?) -> Void)) {
         if let url = URL(string: urlString) {

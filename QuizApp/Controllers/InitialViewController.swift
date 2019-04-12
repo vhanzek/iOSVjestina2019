@@ -10,6 +10,7 @@ import UIKit
 class InitialViewController: UIViewController {
     
     private final let quizService = QuizService()
+    private final let imageService = ImageService()
     
     var questionView: QuestionView?
     
@@ -26,8 +27,7 @@ class InitialViewController: UIViewController {
     func fetchQuizzes() {
         quizService.fetchQuizzes(completion: { (quizzes) in
             DispatchQueue.main.async {
-                if let quizzes = quizzes {
-                    let quiz = quizzes.randomElement()!
+                if let quizzes = quizzes, let quiz = quizzes.randomElement() {
                     self.setFunFact(quizzes: quizzes)
                     self.setQuizData(quiz: quiz)
                     self.setQuestionData(question: quiz.questions.randomElement()!)
@@ -52,9 +52,13 @@ class InitialViewController: UIViewController {
         self.quizTitleLabel.sizeToFit()
         self.quizTitleLabel.center.x = self.view.center.x
         
-        if let image = quiz.image {
-            self.quizImage.image = image
-            self.quizImage.center.x = self.view.center.x
+        if let imageUrl = quiz.imageUrl {
+            imageService.fetchImage(urlString: imageUrl, completion: { (image) in
+                DispatchQueue.main.async {
+                    self.quizImage.image = image
+                    self.quizImage.center.x = self.view.center.x
+                }
+            })
         }
     }
     
