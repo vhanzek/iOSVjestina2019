@@ -5,8 +5,6 @@
 //  Created by Vjeran Hanzek on 30/03/2019.
 //
 
-import Foundation
-
 class Question {
     
     let id: Int

@@ -5,8 +5,22 @@
 //  Created by Vjeran Hanzek on 30/03/2019.
 //
 
-import Foundation
 import UIKit
+
+enum Category: String, CaseIterable {
+    
+    case sports = "SPORTS"
+    case science = "SCIENCE"
+    
+    var color: UIColor {
+        switch self {
+        case .sports:
+            return UIColor.red
+        case .science:
+            return UIColor.green
+        }
+    }
+}
 
 class Quiz {
     
@@ -29,8 +43,8 @@ class Quiz {
             self.id = id
             self.title = title
             self.level = level
-            self.questions = questionsJson.compactMap{ Question(json: $0) }
-            self.category = Category.category(text: category)
+            self.questions = questionsJson.compactMap(Question.init)
+            self.category = Category(rawValue: category)!
             self.description = jsonDict["description"] as? String
             self.imageUrl = jsonDict["image"] as? String
         } else {

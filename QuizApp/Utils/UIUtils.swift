@@ -5,8 +5,8 @@
 //  Created by Vjeran Hanzek on 06/04/2019.
 //
 
-import Foundation
 import UIKit
+import PureLayout
 
 class UIUtils {
     
@@ -20,17 +20,24 @@ class UIUtils {
         toastLabel.backgroundColor = UIColor.red.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
+        toastLabel.layer.cornerRadius = 5;
         toastLabel.clipsToBounds = true
         view.addSubview(toastLabel)
         
-        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
+        toastLabel.autoAlignAxis(.vertical, toSameAxisOf: view)
+        toastLabel.autoPinEdge(.bottom, to: .bottom, of: view, withOffset: -20)
+        
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
         })
     }
     
+    static func showAlert(title: String, message: String, actions: [UIAlertAction]?, viewController: UIViewController) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions?.forEach{ alertController.addAction($0) }
+        viewController.present(alertController, animated: true, completion: nil)
+    }
 }

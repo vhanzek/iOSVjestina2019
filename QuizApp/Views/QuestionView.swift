@@ -7,19 +7,28 @@
 
 import UIKit
 
+protocol QuestionViewDelegate: class {
+    func questionAnswered(isCorrectAnswer: Bool)
+}
+
 class QuestionView: UIView {
     
-    private var questionObject: Question!
+    private var question: Question?
+    
+    weak var delegate: QuestionViewDelegate?
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerButtons: [UIButton]!
     
     @IBAction func questionAnswered(_ sender: Any) {
-        if let button = sender as? UIButton {
-            button.backgroundColor =
-                button.tag == self.question.correctAnswer ? .green : .red
-            self.answerButtons.forEach({$0.isEnabled = false})
+        if let button = sender as? UIButton, let question = self.question {
+            let isCorrectAnswer = button.tag == question.correctAnswer
+            button.backgroundColor = isCorrectAnswer ? .green : .red
+            answerButtons.forEach{ $0.isEnabled = false }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: {
+                self.delegate?.questionAnswered(isCorrectAnswer: isCorrectAnswer)
+            })
         }
     }
     
@@ -35,23 +44,21 @@ class QuestionView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed("QuestionView", owner: self, options: nil)
-        addSubview(contentView)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(contentView)
+        
+        answerButtons.forEach {
+            $0.layer.borderColor = UIColor.gray.cgColor
+            $0.layer.borderWidth = 1
+        }
     }
     
-    var question: Question {
-        get {
-            return self.questionObject
-        }
-        set(question) {
-            self.questionObject = question
-            self.questionLabel.text = question.question
-            self.answerButtons.enumerated().forEach{
-                $1.setTitle(question.answers[$0], for: .normal)
-                $1.backgroundColor = .clear
-                $1.isEnabled = true
-            }
+    func setup(question: Question) {
+        self.question = question
+        self.questionLabel.text = question.question
+        self.answerButtons.enumerated().forEach{
+            $1.setTitle(question.answers[$0], for: .normal)
         }
     }
     
