@@ -42,17 +42,34 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-Ew-Qht">
-                            <rect key="frame" x="104" y="32.5" width="298" height="12"/>
+                            <rect key="frame" x="104" y="32.5" width="275" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgn-4g-F5d">
+                            <rect key="frame" x="385" y="28.5" width="17" height="20"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" button="YES" image="YES"/>
+                            </accessibility>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="17" id="iOv-nM-eXk"/>
+                                <constraint firstAttribute="height" constant="20" id="kFu-Pe-2o1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Button" image="leaderboard"/>
+                            <connections>
+                                <action selector="leaderboardClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="CGf-vQ-zAH"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="XaS-Ew-Qht" secondAttribute="trailing" constant="12" id="0qe-vX-h8b"/>
+                        <constraint firstAttribute="trailing" secondItem="XaS-Ew-Qht" secondAttribute="trailing" constant="35" id="0qe-vX-h8b"/>
                         <constraint firstItem="S1U-4a-rfL" firstAttribute="leading" secondItem="p5J-da-DOi" secondAttribute="leading" constant="12" id="1wk-zw-cwe"/>
+                        <constraint firstItem="cgn-4g-F5d" firstAttribute="trailing" secondItem="mRz-sA-unb" secondAttribute="trailing" id="2la-VR-xvc"/>
                         <constraint firstItem="XaS-Ew-Qht" firstAttribute="leading" secondItem="AHW-Q8-JOp" secondAttribute="leading" id="4Aw-HW-gxU"/>
+                        <constraint firstItem="cgn-4g-F5d" firstAttribute="centerY" secondItem="XaS-Ew-Qht" secondAttribute="centerY" id="4Km-v5-q7j"/>
                         <constraint firstAttribute="trailing" secondItem="mRz-sA-unb" secondAttribute="trailing" constant="12" id="BxR-sB-rEi"/>
                         <constraint firstItem="mRz-sA-unb" firstAttribute="leading" secondItem="AHW-Q8-JOp" secondAttribute="trailing" constant="6" id="Gh7-LO-7LE"/>
                         <constraint firstItem="S1U-4a-rfL" firstAttribute="top" secondItem="p5J-da-DOi" secondAttribute="top" constant="12" id="HaL-aw-xBQ"/>
@@ -76,10 +93,14 @@
             <connections>
                 <outlet property="descriptionLabel" destination="XaS-Ew-Qht" id="e58-KQ-t6V"/>
                 <outlet property="difficultyLabel" destination="mRz-sA-unb" id="HKq-5q-ZTo"/>
+                <outlet property="leaderboardButton" destination="cgn-4g-F5d" id="V1v-yF-G9o"/>
                 <outlet property="quizImageView" destination="S1U-4a-rfL" id="cRb-wf-9dv"/>
                 <outlet property="titleLabel" destination="AHW-Q8-JOp" id="efo-Lc-hFN"/>
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="16.071428571428569"/>
         </view>
     </objects>
+    <resources>
+        <image name="leaderboard" width="16.666666030883789" height="16.666666030883789"/>
+    </resources>
 </document>

@@ -15,7 +15,6 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quizImageView: UIImageView!
     @IBOutlet weak var startQuizButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var answers: [Bool] = []
@@ -34,9 +33,8 @@ class QuizViewController: UIViewController {
     
     @IBAction func startQuiz(_ sender: Any) {
         self.navigationItem.setHidesBackButton(true, animated: true)
-        scoreLabel.isHidden = false
-        scoreLabel.text = "0/\(viewModel.numberOfQuestions)"
         scrollView.isHidden = false
+        scrollView.isScrollEnabled = false
         startQuizButton.isEnabled = false
         startTime = Date()
     }
@@ -117,11 +115,6 @@ extension QuizViewController: QuestionViewDelegate {
     
     func questionAnswered(isCorrectAnswer: Bool) {
         answers.append(isCorrectAnswer)
-        
-        if isCorrectAnswer {
-            let numberOfCorrectAnswers = answers.filter{$0}.count
-            scoreLabel.text = "\(numberOfCorrectAnswers)/\(viewModel.numberOfQuestions)"
-        }
         
         if answers.count == viewModel.numberOfQuestions {
             postQuizResults()

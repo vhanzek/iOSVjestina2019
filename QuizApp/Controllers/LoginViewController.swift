@@ -67,8 +67,4 @@ extension LoginViewController {
     private func getContentViewBottomMargin() -> CGFloat {
         return view.frame.size.height - (contentView.frame.size.height + contentView.frame.origin.y)
     }
-    
-    
 }
-
-

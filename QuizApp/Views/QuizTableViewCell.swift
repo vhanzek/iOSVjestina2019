@@ -8,12 +8,23 @@
 import UIKit
 import Kingfisher
 
+protocol QuestionTableViewCellDelegate: class {
+    func leaderboardClicked(forQuiz id: Int)
+}
+
 class QuizTableViewCell: UITableViewCell {
+    
+    weak var delegate: QuestionTableViewCellDelegate?
     
     @IBOutlet weak var quizImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var leaderboardButton: UIButton!
+    
+    @IBAction func leaderboardClicked(_ sender: UIButton) {
+        self.delegate?.leaderboardClicked(forQuiz: sender.tag)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +49,7 @@ class QuizTableViewCell: UITableViewCell {
     }
     
     func setup(withQuiz quiz: QuizCellModel) {
+        self.leaderboardButton.tag = quiz.id
         self.titleLabel.text = quiz.title
         self.descriptionLabel.text = quiz.description
         self.difficultyLabel.text = quiz.level

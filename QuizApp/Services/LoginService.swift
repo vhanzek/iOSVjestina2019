@@ -27,7 +27,7 @@ class LoginService {
                         if let jsonDict = json as? [String: Any],
                             let accessToken = jsonDict["token"] as? String,
                             let userId = jsonDict["user_id"] as? Int {
-                            completion(Authorization(accessToken: accessToken, userId: userId))
+                            completion(Authorization(accessToken: accessToken, userId: userId, username: username))
                         } else {
                             completion(nil)
                         }

@@ -38,6 +38,7 @@ class QuizService {
     
     private final let quizzesUrlString = "https://iosquiz.herokuapp.com/api/quizzes"
     private final let resultUrlString = "https://iosquiz.herokuapp.com/api/result"
+    private final let leaderboardUrlString = "https://iosquiz.herokuapp.com/api/score?quiz_id="
     
     func fetchQuizzes(completion: @escaping (([Quiz]?) -> Void)) {
         if let url = URL(string: quizzesUrlString) {
@@ -50,8 +51,41 @@ class QuizService {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
                         if let jsonDict = json as? [String: Any],
                             let quizzesList = jsonDict["quizzes"] as? [Any] {
-                            let quizzes = quizzesList.compactMap(Quiz.init)
+                            let quizzes = quizzesList.compactMap(Quiz.createFrom)
                             completion(quizzes)
+                        } else {
+                            completion(nil)
+                        }
+                    } catch {
+                        completion(nil)
+                    }
+                } else {
+                    completion(nil)
+                }
+            }
+            dataTask.resume()
+        } else {
+            completion(nil)
+        }
+    }
+    
+    func fetchScores(forQuiz id: Int, completion: @escaping (([Score]?) -> Void)) {
+        if let url = URL(string: leaderboardUrlString + "\(id)") {
+            var request = URLRequest(url: url)
+            
+            // Set header
+            if let accessToken = AuthorizationUtils.getAccessToken() {
+                request.addValue(accessToken, forHTTPHeaderField: "Authorization")
+            }
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        if let jsonDict = json as? [Any] {
+                            let scores = jsonDict.compactMap(Score.init)
+                            completion(scores)
                         } else {
                             completion(nil)
                         }

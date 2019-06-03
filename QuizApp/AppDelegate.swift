@@ -13,14 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private let loginController = LoginViewController()
-    private let quizzesController = QuizzesViewController(viewModel: QuizzesViewModel())
+    private let tabBarController = TabBarViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let vc = AuthorizationUtils.isUserLoggedIn() ?
-            UINavigationController(rootViewController: quizzesController) : loginController
+        let vc = AuthorizationUtils.isUserLoggedIn() ? tabBarController : loginController
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
@@ -32,11 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = loginController
     }
     
-    func switchToQuizzesController() {
-        self.window?.rootViewController = UINavigationController(
-            rootViewController: quizzesController)
+    func switchToTabBarController() {
+        self.window?.rootViewController = tabBarController
     }
-
 
 }
 

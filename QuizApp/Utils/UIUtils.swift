@@ -40,4 +40,14 @@ class UIUtils {
         actions?.forEach{ alertController.addAction($0) }
         viewController.present(alertController, animated: true, completion: nil)
     }
+    
+    static func switchToTabBarController() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchToTabBarController()
+    }
+    
+    static func switchToLoginController() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchToLoginController()
+    }
 }
