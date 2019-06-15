@@ -28,6 +28,7 @@ struct QuizCellModel {
 class QuizzesViewModel {
     
     private var quizzes: [Quiz]?
+    private var isFetched: Bool = false
     
     lazy var frc: NSFetchedResultsController<Quiz> = {
         let request: NSFetchRequest<Quiz> = Quiz.fetchRequest()
@@ -39,9 +40,10 @@ class QuizzesViewModel {
     }()
     
     public func fetchQuizzes(completion: @escaping () -> Void) {
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetwork() && !self.isFetched {
             QuizService().fetchQuizzes(completion: { [weak self] (quizzes) in
                 self?.quizzes = DataController.shared.fetchQuizzes()
+                self?.isFetched = true
                 completion()
             })
         } else {

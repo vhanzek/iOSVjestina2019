@@ -11,36 +11,7 @@ import UIKit
 class QuizzesViewController: UIViewController {
     
     internal var viewModel: QuizzesViewModel!
-    
-    private var refreshControl: UIRefreshControl!
-    
-    private let cellReuseIdentifier = "cellReuseIdentifier"
-    
-    @objc func refresh(tableView: UITableView) {
-        DispatchQueue.main.async {
-            tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        }
-    }
-    
-    internal func setup(tableView: UITableView) {
-        viewModel!.fetchQuizzes {
-            self.refresh(tableView: tableView)
-        }
-    }
-    
-    internal func setupTableView(tableView: UITableView) {
-        tableView.backgroundColor = UIColor.lightGray
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(QuizzesViewController.refresh), for: UIControl.Event.valueChanged)
-        tableView.refreshControl = refreshControl
-        
-        tableView.register(UINib(nibName: "QuizTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
-    }
+    internal let cellReuseIdentifier = "cellReuseIdentifier"
     
 }
 

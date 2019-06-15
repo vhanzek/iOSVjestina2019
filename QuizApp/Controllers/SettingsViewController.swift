@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logoutClicked(_ sender: Any) {
         AuthorizationUtils.logoutUser()
+        UIUtils.switchToLoginController()
     }
     
     override func viewDidLoad() {

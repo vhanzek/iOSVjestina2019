@@ -14,7 +14,9 @@
             <connections>
                 <outlet property="contentView" destination="RdX-cA-fiG" id="plX-dJ-WaL"/>
                 <outlet property="errorLabel" destination="5Ov-Of-vNY" id="UiG-sf-f0e"/>
+                <outlet property="headingLabel" destination="kfp-Eb-mz6" id="Z6s-Y6-tcg"/>
                 <outlet property="passwordTextField" destination="3Zb-4b-UN8" id="beB-Te-A0A"/>
+                <outlet property="signInButton" destination="3OA-sV-e3e" id="H59-Bz-TIo"/>
                 <outlet property="usernameTextField" destination="ARJ-Q3-3Th" id="M5O-qR-Ece"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,10 +27,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RdX-cA-fiG">
-                    <rect key="frame" x="32" y="270.5" width="311" height="126"/>
+                    <rect key="frame" x="32" y="252.5" width="311" height="162.5"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfp-Eb-mz6">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARJ-Q3-3Th">
-                            <rect key="frame" x="0.0" y="0.0" width="311" height="32"/>
+                            <rect key="frame" x="0.0" y="36.5" width="311" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="X1U-Fo-NiS"/>
                             </constraints>
@@ -37,13 +45,13 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Zb-4b-UN8">
-                            <rect key="frame" x="0.0" y="48" width="311" height="32"/>
+                            <rect key="frame" x="0.0" y="84.5" width="311" height="32"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OA-sV-e3e">
-                            <rect key="frame" x="0.0" y="96" width="311" height="30"/>
+                            <rect key="frame" x="0.0" y="132.5" width="311" height="30"/>
                             <state key="normal" title="Sign in"/>
                             <connections>
                                 <action selector="userLogin:" destination="-1" eventType="touchUpInside" id="7ga-KQ-vBP"/>
@@ -58,7 +66,7 @@
                     <viewLayoutGuide key="safeArea" id="h2G-F3-gqg"/>
                 </stackView>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username or password incorrect." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ov-Of-vNY">
-                    <rect key="frame" x="32" y="406.5" width="311" height="14.5"/>
+                    <rect key="frame" x="32" y="425" width="311" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>

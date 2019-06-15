@@ -46,14 +46,12 @@ class AuthorizationUtils {
         UserDefaults.standard.set(auth.accessToken, forKey: TOKEN_KEY)
         UserDefaults.standard.set(auth.userId, forKey: USER_ID)
         UserDefaults.standard.set(auth.username, forKey: USERNAME)
-        UIUtils.switchToTabBarController()
     }
     
     static func logoutUser() {
         UserDefaults.standard.removeObject(forKey: TOKEN_KEY)
         UserDefaults.standard.removeObject(forKey: USER_ID)
         UserDefaults.standard.removeObject(forKey: USERNAME)
-        UIUtils.switchToLoginController()
     }
     
 }
