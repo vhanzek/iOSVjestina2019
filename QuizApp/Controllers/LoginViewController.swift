@@ -58,16 +58,21 @@ class LoginViewController: UIViewController {
         self.errorLabel.isHidden = true
         
         let viewHeight = view.bounds.height
-        let views = [headingLabel, usernameTextField, passwordTextField, signInButton]
-        let delays = [0.0, 0.1, 0.2, 0.3]
+        let views = [headingLabel, usernameTextField, passwordTextField]
+        let delays = [0.0, 0.1, 0.2]
         
         for (view, delay) in zip(views, delays) {
             UIView.animate(withDuration: 0.5, delay: delay, animations: {
                 view?.center.y -= viewHeight
                 view?.alpha = 0.0
-            }) { _ in
-                UIUtils.switchToTabBarController()
-            }
+            }) { _ in }
+        }
+    
+        UIView.animate(withDuration: 0.5, delay: 0.3, animations: {
+            self.signInButton.center.y -= viewHeight
+            self.signInButton.alpha = 0.0
+        }) { _ in
+            UIUtils.switchToTabBarController()
         }
     }
     
